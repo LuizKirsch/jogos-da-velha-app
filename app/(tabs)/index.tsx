@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, useWindowDimensions, Button } from "react-native";
+import { vitoria, reiniciarJogo } from "..scripts\Vitoria.js";
 
 const NUM_ROWS = 6;
 const NUM_COLS = 4;
