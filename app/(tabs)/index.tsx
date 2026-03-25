@@ -3,7 +3,6 @@ import {
   Button,
   Image,
   StyleSheet,
-  Text,
   TouchableOpacity,
   useWindowDimensions,
   View,
@@ -24,8 +23,8 @@ function gerarParesEmbaralhados(qtdPares: number) {
   return pares.sort(() => Math.random() - 0.5);
 }
 
-const LINHAS = 6;
-const COLUNAS = 4;
+const LINHAS = 2;
+const COLUNAS = 2;
 
 function GradeJogoMemoria() {
   const { width } = useWindowDimensions();
@@ -145,14 +144,6 @@ function GradeJogoMemoria() {
               );
             })}
           </View>
-        ))}
-      </View>
-
-      <View style={estilos.info}>
-        {temposTurno.map((t, i) => (
-          <Text key={i}>
-            P{t.jogador} - {(t.tempo / 1000).toFixed(2)}s
-          </Text>
         ))}
       </View>
 

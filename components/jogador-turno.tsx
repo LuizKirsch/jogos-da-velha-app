@@ -2,27 +2,44 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 type Props = {
-  currentPlayer: number;
-  moves: { 1: number; 2: number };
+  currentPlayer: 1 | 2;
+  moves: {
+    1: number;
+    2: number;
+  };
 };
 
 export function JogadorTurno({ currentPlayer, moves }: Props) {
+  const getPlayerStyle = (id: 1 | 2) => [
+    styles.playerBox,
+    currentPlayer === id && styles.activePlayer,
+  ];
+
+  const getTextStyle = (id: 1 | 2) => [
+    styles.name,
+    currentPlayer === id && styles.activeText,
+  ];
+
   return (
     <View style={styles.container}>
-      <View
-        style={[styles.playerBox, currentPlayer === 1 && styles.activePlayer]}
-      >
-        <Text style={styles.name}>Jogador 1</Text>
-        <Text style={styles.moves}>{moves[1]} jogadas</Text>
+      {/* Jogador 1 */}
+      <View style={getPlayerStyle(1)}>
+        <Text style={getTextStyle(1)}>Jogador 1</Text>
+        <Text style={[styles.moves, currentPlayer === 1 && styles.activeText]}>
+          {moves[1]} {moves[1] === 1 ? "jogada" : "jogadas"}
+        </Text>
       </View>
 
-      <Text style={styles.vs}>VS</Text>
+      <View style={styles.vsCircle}>
+        <Text style={styles.vsText}>VS</Text>
+      </View>
 
-      <View
-        style={[styles.playerBox, currentPlayer === 2 && styles.activePlayer]}
-      >
-        <Text style={styles.name}>Jogador 2</Text>
-        <Text style={styles.moves}>{moves[2]} jogadas</Text>
+      {/* Jogador 2 */}
+      <View style={getPlayerStyle(2)}>
+        <Text style={getTextStyle(2)}>Jogador 2</Text>
+        <Text style={[styles.moves, currentPlayer === 2 && styles.activeText]}>
+          {moves[2]} {moves[2] === 1 ? "jogada" : "jogadas"}
+        </Text>
       </View>
     </View>
   );
@@ -33,38 +50,67 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginHorizontal: 20,
     marginTop: 40,
+    paddingHorizontal: 16,
   },
+
   playerBox: {
     flex: 1,
-    padding: 14,
-    borderRadius: 14,
-    backgroundColor: "#e0e0e0",
+    paddingVertical: 20,
+    paddingHorizontal: 12,
+    borderRadius: 18,
+    backgroundColor: "#F5F5F5",
     alignItems: "center",
-    marginHorizontal: 6,
+    borderWidth: 2,
+    borderColor: "#E0E0E0",
+    marginHorizontal: 8,
+
+    shadowColor: "#000",
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3,
   },
+
   activePlayer: {
     backgroundColor: "#4CAF50",
-    transform: [{ scale: 1.08 }],
-    shadowColor: "#000",
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 4,
+    borderColor: "#2E7D32",
+    elevation: 10,
+    shadowColor: "#4CAF50",
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    transform: [{ scale: 1.05 }],
   },
+
   name: {
-    fontWeight: "bold",
-    fontSize: 16,
-    color: "#333",
+    fontWeight: "700",
+    fontSize: 17,
+    color: "#444",
   },
+
   moves: {
-    marginTop: 4,
+    marginTop: 6,
     fontSize: 13,
-    color: "#555",
+    color: "#777",
+    textTransform: "uppercase",
+    letterSpacing: 1,
   },
-  vs: {
+
+  vsCircle: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1,
+    marginHorizontal: -10,
+    borderWidth: 1,
+    borderColor: "#DDD",
+  },
+
+  vsText: {
     fontWeight: "bold",
-    fontSize: 14,
-    color: "#888",
+    fontSize: 11,
+    color: "#999",
   },
 });
