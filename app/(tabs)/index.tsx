@@ -48,7 +48,6 @@ function GradeJogoMemoria() {
     2: 0,
   });
   
-  // Novo estado para contar os acertos de cada jogador
   const [acertos, setAcertos] = useState<Record<number, number>>({
     1: 0,
     2: 0,
@@ -74,7 +73,7 @@ function GradeJogoMemoria() {
     setBloqueado(false);
     setJogadorAtual(1);
     setJogadas({ 1: 0, 2: 0 });
-    setAcertos({ 1: 0, 2: 0 }); // Zera os acertos ao reiniciar
+    setAcertos({ 1: 0, 2: 0 });
     setTemposTurno([]);
     setInicioTurno(Date.now());
   }
@@ -123,10 +122,8 @@ function GradeJogoMemoria() {
     }
   }, [viradas, cartas, jogadorAtual, inicioTurno]);
 
-  // Lógica para verificar se o jogo terminou
   const jogoFinalizado = combinadas.length === LINHAS * COLUNAS && combinadas.length > 0;
 
-  // Renderiza o Ecrã de Vitória caso o jogo tenha terminado
   if (jogoFinalizado) {
     let mensagemVencedor = "Empate!";
     if (acertos[1] > acertos[2]) mensagemVencedor = "Jogador 1 Venceu!";
@@ -149,7 +146,6 @@ function GradeJogoMemoria() {
     );
   }
 
-  // Renderiza o tabuleiro do jogo
   return (
     <View style={estilos.container}>
       <View style={estilos.info}>
