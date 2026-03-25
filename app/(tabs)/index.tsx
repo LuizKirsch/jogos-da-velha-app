@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
+import { StyleSheet, Text, View, useWindowDimensions, Button } from "react-native";
 
 const NUM_ROWS = 6;
 const NUM_COLS = 4;
@@ -25,6 +25,9 @@ function Grid4x6() {
           ))}
         </View>
       ))}
+    </View>
+    <View style={}>
+      <button title = "Reiniciar" onPress={handlePress}/>
     </View>
   );
 }
