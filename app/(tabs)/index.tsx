@@ -12,7 +12,7 @@ function Grid4x6() {
   const cellSize = (width - horizontalMargin - cellMargin) / NUM_COLS;
 
   function handlePress() {
-    reiniciarJogo(); // 
+    reiniciarJogo(); 
   }
 
   return (
