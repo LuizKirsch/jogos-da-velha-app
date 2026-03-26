@@ -37,6 +37,7 @@ export function TelaVitoria({
             Tempo: {formatarTempo(tempoVencedor)}
           </Text>
           <Text style={styles.texto}>Jogadas: {jogadasVencedor}</Text>
+          <Text style={styles.texto}>Acertos: {acertos[vencedor as keyof typeof acertos]}</Text>
         </View>
       )}
 
