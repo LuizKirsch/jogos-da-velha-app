@@ -24,8 +24,8 @@ function gerarParesEmbaralhados(qtdPares: number) {
   return pares.sort(() => Math.random() - 0.5);
 }
 
-const LINHAS = 2;
-const COLUNAS = 2;
+const LINHAS = 4;
+const COLUNAS = 6;
 
 function GradeJogoMemoria() {
   const { width } = useWindowDimensions();
